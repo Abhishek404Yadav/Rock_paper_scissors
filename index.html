@@ -5,10 +5,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-Paper-Scissors</title>
+    <link rel="stylesheet" href="rps-ui.css">
+    <script src="game.js" defer></script>
+    <!-- Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Fonts End here -->
 </head>
 <body>
-    <h1>Welcome to the Game </h1>
-    
-    <script src="game.js"></script>
-</body>
+    <header class="header">
+      <h1 class="title">ROCK PAPER SCISSORS</h1>
+    </header>
+    <div class="main">
+      <div class="scoreboard">
+        <h2 class="score-info" id="scoreInfo">Choose your weapon</h2>
+        <h3 class="score-message" id="scoreMessage">
+          First to score 5 points wins the game
+        </h3>
+        <div class="score-container">
+          <div class="score-box">
+            <div class="sign" id="playerSign">❔</div>
+            <p class="score" id="playerScore">Player: 0</p>
+          </div>
+          <div class="score-box">
+            <div class="sign" id="computerSign">❔</div>
+            <p class="score" id="computerScore">Computer: 0</p>
+          </div>
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="btn" id="rockBtn">
+          <div class="sign">✊</div>
+        </button>
+        <button class="btn" id="paperBtn">
+          <div class="sign">✋</div>
+        </button>
+        <button class="btn" id="scissorsBtn">
+          <div class="sign">✌</div>
+        </button>
+      </div>
+  </div>
+    <!-- <div class="modal" id="endgameModal">
+      <p class="modal-title" id="endgameMsg"></p>
+      <button class="btn btn-restart" id="restartBtn">Play again</button>
+    </div>
+    <div class="overlay" id="overlay"></div> -->
+  </body>
 </html>
+</html>
+<!-- ✌🤞🖖🧱🗿 🖐 ✊ -->
