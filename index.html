@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-Paper-Scissors</title>
+    <link rel="icon" type="image/x-icon" href="favicon-32x32.png">
+    <!-- <link rel="shortcut icon" href="favicon-32x32.png" /> -->
     <link rel="stylesheet" href="rps-ui.css">
     <script src="game.js" defer></script>
     <!-- Fonts  -->
@@ -21,30 +23,30 @@
       <h1 class="title">ROCK PAPER SCISSORS</h1>
     </header>
     <div class="main">
-      <div class="scoreboard">
-        <h2 class="score-info" id="scoreInfo">Choose your weapon</h2>
-        <h3 class="score-message" id="scoreMessage">
+      <div class= "scoreboard">
+        <h2 class="score-info" id="roundInfo">Choose your weapon</h2>
+        <h3 class="score-message" id="roundResult">
           First to score 5 points wins the game
         </h3>
         <div class="score-container">
           <div class="score-box">
-            <div class="sign" id="playerSign">❔</div>
-            <p class="score" id="playerScore">Player: 0</p>
+            <div class="sign result" id="userSign">❔</div>
+            <p class="score" id="userScore">Player: 0</p>
           </div>
           <div class="score-box">
-            <div class="sign" id="computerSign">❔</div>
+            <div class="sign result" id="computerSign">❔</div>
             <p class="score" id="computerScore">Computer: 0</p>
           </div>
         </div>
       </div>
-      <div class="buttons">
-        <button class="btn" id="rockBtn">
-          <div class="sign">✊</div>
+      <div class="buttons"> 
+        <button class="btn" data-choice="rock" id="r">
+          <div class="sign" >✊</div>
         </button>
-        <button class="btn" id="paperBtn">
+        <button class="btn" data-choice="paper" id="p">
           <div class="sign">✋</div>
         </button>
-        <button class="btn" id="scissorsBtn">
+        <button class="btn" data-choice="scissors" id="s">
           <div class="sign">✌</div>
         </button>
       </div>
@@ -57,4 +59,3 @@
   </body>
 </html>
 </html>
-<!-- ✌🤞🖖🧱🗿 🖐 ✊ -->
