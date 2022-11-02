@@ -1,5 +1,5 @@
-const userScore = 0;
-const computerScore = 0;
+let userScore = 0;
+let computerScore = 0;
 // !DOM cache variables
 const roundInfo_ui = document.getElementById("roundInfo");
 const roundResult_ui = document.getElementById("roundResult");
@@ -10,19 +10,13 @@ const computerScore_ui = document.getElementById("computerScore");
 
 const userChoiceArr = Array.from(document.querySelectorAll("[data-choice]"));
 
-//-----This event is run when we click any button----
+//-----This event is run  when we click any button and give user choice----
 for (const element of userChoiceArr) {
   element.addEventListener("click", () => {
     const selectedChoice = element.dataset.choice;
+    console.log(`user ${selectedChoice}`);
     game(selectedChoice);
   });
-}
-//!-------End here--------
-
-//------This game function call playRound function-----
-function game(userSelection) {
-  const computerChoice = getComputerChoice();
-  console.log(playRound(userSelection, computerChoice));
 }
 //!-------End here--------
 
@@ -32,48 +26,113 @@ const getComputerChoice = () => {
   let computerChoice;
   switch (randomNo) {
     case 0:
-      computerChoice = "rock";
+      computerChoice = "Rock";
+      console.log(computerChoice);
       break;
     case 1:
-      computerChoice = "paper";
+      computerChoice = "Paper";
+      console.log(computerChoice);
       break;
     case 2:
-      computerChoice = "scissors";
+      computerChoice = "Scissors";
+      console.log(computerChoice);
       break;
   }
   return computerChoice;
 };
 //!-------End here--------
 
-// --------This is playRound Function---------
-
+// --------This is playRound comparison Function---------
 function playRound(userChoice, computerChoice) {
   if (userChoice === computerChoice) {
-    return "The game is a tie";
-  } //Both select the Same choice
+    draw(userChoice, computerChoice);
+  } //!Both select the Same choice
+  else {
+    if (userChoice === "Rock") {
+      if (computerChoice === "Paper") {
+        lost(userChoice, computerChoice);
+      } else {
+        win(userChoice, computerChoice);
+      }
+    } // ?end userchoice is rock
 
-  if (userChoice === "rock") {
-    if (computerChoice === "paper") {
-      return "You Lost!";
-    } else {
-      return "You Won!";
-    }
-  } // ?end userchoice is rock
+    if (userChoice === "Paper") {
+      if (computerChoice === "Scissors") {
+        lost(userChoice, computerChoice);
+      } else {
+        win(userChoice, computerChoice);
+      }
+    } // ?end userchoice is paper
 
-  if (userChoice === "paper") {
-    if (computerChoice === "scissors") {
-      return "You Lost!";
-    } else {
-      return "You Won!";
-    }
-  } // ?end userchoice is paper
-
-  if (userChoice === "scissors") {
-    if (computerChoice === "rock") {
-      return "You Lost!";
-    } else {
-      return "You Won!";
-    }
-  } // ?end userchoice is scissors
+    if (userChoice === "Scissors") {
+      if (computerChoice === "Rock") {
+        lost(userChoice, computerChoice);
+      } else {
+        win(userChoice, computerChoice);
+      }
+    } // ?end userchoice is scissors
+  }
 }
 //!-------End here--------
+
+//------This game function call playRound function-----
+function game(userSelection) {
+  let computerChoice = getComputerChoice();
+  playRound(userSelection, computerChoice);
+  updateSign(userSelection, computerChoice);
+}
+//!-------End here--------
+
+// ?------------------------------UI Design------------------------------------------
+
+//-----------Function Of WIN Loose and Draw-------------- 
+function win(userChoice, computerChoice) {
+  userScore++;
+  userScore_ui.textContent = `Player:${userScore}`; //we can also use inner HTML but it is unsafe
+  computerScore_ui.textContent = `Computer:${computerScore}`;
+  roundInfo_ui.textContent = "You Win! 🔥";
+  roundResult_ui.textContent = `${userChoice} Beats ${computerChoice} !`;
+  userSign_ui.classList.add("opacity");
+  computerSign_ui.classList.remove("opacity");
+}
+function lost(userChoice, computerChoice) {
+  computerScore++;
+  userScore_ui.textContent = `Player:${userScore}`;
+  computerScore_ui.textContent = `Computer:${computerScore}`;
+  roundInfo_ui.textContent = "You Lost! 😢";
+  roundResult_ui.textContent = `${userChoice} is Beaten by ${computerChoice} !`;
+  computerSign_ui.classList.add("opacity");
+  userSign_ui.classList.remove("opacity");
+}
+function draw(userChoice, computerChoice) {
+  userSign_ui.classList.remove("opacity");
+  computerSign_ui.classList.remove("opacity");
+  roundInfo_ui.textContent = "It's a Tie! 😑";
+  roundResult_ui.textContent = `${userChoice} Ties with ${computerChoice} !`;
+}
+// !-------End her---------
+//-----------Function for updating Signs-------------- 
+function updateSign(playerChoice, computerChoice) {
+  switch (playerChoice) {
+    case "Rock":
+      userSign_ui.textContent = "✊";
+      break;
+    case "Paper":
+      userSign_ui.textContent = "✋";
+      break;
+    case "Scissors":
+      userSign_ui.textContent = "✌";
+      break;
+  }
+  switch (computerChoice) {
+    case "Rock":
+      computerSign_ui.textContent = "✊";
+      break;
+    case "Paper":
+      computerSign_ui.textContent = "✋";
+      break;
+    case "Scissors":
+      computerSign_ui.textContent = "✌";
+      break;
+  }
+}
