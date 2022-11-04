@@ -85,7 +85,7 @@ div.sign {
   opacity: 0.5;
 }
 
-.score {
+.score{
   margin-top: 10px;
   margin-bottom: 20px;
   font-size: 22px;
@@ -106,11 +106,11 @@ div.sign {
   height: 150px;
   transition: 100ms;
 }
-.btn:hover {
+.btnActive:hover {
   background-color: var(--secondary-dark-hover);
 }
 
-.btn:active {
+.btnActive:active {
   background-color: var(--secondary-dark-active);
   transform: scale(1.2);
 }
@@ -120,4 +120,71 @@ div.sign {
 .opacity {
   opacity: 1;
   transform: scale(1.1);
+}
+
+/* Modal CSS */
+.modal {
+  z-index: 1;
+  position: fixed;
+  top:50%;
+  left: 50%;
+  transform: translate(-50% ,-50%) scale(0); /* box shift according to it's size */
+  text-align: center;
+  width: 300px;
+  max-width: 60%;
+  padding: 20px;
+  border: 2px solid var(--primary-yellow);
+  background-color: var(--header);
+  border-radius: 10px;
+  user-select: none;
+} 
+
+#endgameMsg{
+  font-size: 22px;
+  font-family: "Press Start 2P", cursive;
+  font-weight: 700;
+  color: var(--primary-yellow);
+}
+.resetBtn{
+  padding: 15px 60px;
+  margin-top: 30px;
+  width: max-content;
+  font-size: 20px;
+  font-weight: 600;
+  border: 2px solid var(--primary-yellow);
+  background-color: var(--primary-dark);
+  color: var(--primary-light);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/*
+transform: translate(-50%, -50%) scale(0);
+transition: 200ms ease-in-out; */
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 50%;
+  background-color: black;
+  opacity: 0.6;
+  /* !pointer-events: none; This property is basically does is allow us to click when overlay is active which is not required*/
+}
+#overlay2{
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  right: 0;
+  background-color: var(--primary-light)
+}
+
+.overlay.active {
+  display: block;
+}
+
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
 }

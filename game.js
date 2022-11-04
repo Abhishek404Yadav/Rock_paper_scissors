@@ -94,6 +94,9 @@ function win(userChoice, computerChoice) {
   roundResult_ui.textContent = `${userChoice} Beats ${computerChoice} !`;
   userSign_ui.classList.add("opacity");
   computerSign_ui.classList.remove("opacity");
+  if(userScore==5||computerScore==5){
+    restartGame();
+  }
 }
 function lost(userChoice, computerChoice) {
   computerScore++;
@@ -103,6 +106,9 @@ function lost(userChoice, computerChoice) {
   roundResult_ui.textContent = `${userChoice} is Beaten by ${computerChoice} !`;
   computerSign_ui.classList.add("opacity");
   userSign_ui.classList.remove("opacity");
+  if(userScore==5||computerScore==5){
+    restartGame();
+  }
 }
 function draw(userChoice, computerChoice) {
   userSign_ui.classList.remove("opacity");
@@ -136,3 +142,20 @@ function updateSign(playerChoice, computerChoice) {
       break;
   }
 }
+
+// EndGame Modal Testing
+
+function restartGame() {
+  userScore = 0
+  computerScore = 0
+  roundInfo_ui.textContent = 'Choose your weapon'
+  roundResult_ui.textContent = 'First to score 5 points wins the game'
+  userScore_ui.textContent = 'Player: 0'
+  computerScore_ui.textContent = 'Computer: 0'
+  userSign_ui.textContent = '❔'
+  computerSign_ui.textContent = '❔'
+  endgameModal.classList.remove('active')
+  overlay.classList.remove('active')
+}
+// restartBtn.addEventListener('click', restartGame)
+// overlay.addEventListener('click', closeEndgameModal)

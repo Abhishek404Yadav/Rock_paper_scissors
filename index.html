@@ -42,7 +42,7 @@
         </div>
       </div>
       <div class="buttons"> 
-        <button class="btn" data-choice="Rock" id="r">
+        <button class="btn btnActive" data-choice="Rock" id="r">
           <div class="sign" >✊</div>
         </button>
         <button class="btn" data-choice="Paper" id="p">
@@ -53,11 +53,16 @@
         </button>
       </div>
   </div>
-    <!-- <div class="modal" id="endgameModal">
-      <p class="modal-title" id="endgameMsg"></p>
-      <button class="btn btn-restart" id="restartBtn">Play again</button>
-    </div>
-    <div class="overlay" id="overlay"></div> -->
-  </body>
+
+  <!-- EndGame Modal -->
+  <div class="modal" id="endgameModal">
+    <p class="modal-title" id="endgameMsg">You won!</p>
+    <button class=" resetBtn btnActive" id="resetBtn">Play again</button>
+  </div>
+  <!-- we add this div to cover whole background -->
+  <div class="overlay" id="overlay1"></div> 
+  <div class="overlay" id="overlay2"></div> 
+  
+</body>
 </html>
 </html>
