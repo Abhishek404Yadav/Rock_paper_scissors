@@ -116,7 +116,7 @@ div.sign {
 }
 /* !Button end here  */
 
-/* opacity class for injection with JS*/
+/* opacity class for injection with JS in Computer Sign and User sign*/
 .opacity {
   opacity: 1;
   transform: scale(1.1);
@@ -136,6 +136,7 @@ div.sign {
   border: 2px solid var(--primary-yellow);
   background-color: var(--header);
   border-radius: 10px;
+  transition: 200ms ease-in-out;
   user-select: none;
 } 
 
@@ -158,9 +159,6 @@ div.sign {
   cursor: pointer;
 }
 
-/*
-transform: translate(-50%, -50%) scale(0);
-transition: 200ms ease-in-out; */
 
 .overlay {
   display: none;
@@ -168,19 +166,11 @@ transition: 200ms ease-in-out; */
   top: 0;
   bottom: 0;
   left: 0;
-  right: 50%;
+  right: 0;
   background-color: black;
   opacity: 0.6;
   /* !pointer-events: none; This property is basically does is allow us to click when overlay is active which is not required*/
 }
-#overlay2{
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  right: 0;
-  background-color: var(--primary-light)
-}
-
 .overlay.active {
   display: block;
 }

@@ -7,7 +7,13 @@ const userSign_ui = document.getElementById("userSign");
 const computerSign_ui = document.getElementById("computerSign");
 const userScore_ui = document.getElementById("userScore");
 const computerScore_ui = document.getElementById("computerScore");
+//!Modal Variables
+const endgameMsg_ui=document.getElementById("endgameMsg");
+const endgameModal_ui=document.getElementById("endgameModal");
+const overlay_ui=document.getElementById("overlay");
+const resetBtn_ui=document.getElementById("resetBtn");
 
+//!User Choice Object Variable
 const userChoiceArr = Array.from(document.querySelectorAll("[data-choice]"));
 
 //-----This event is run  when we click any button and give user choice----
@@ -75,7 +81,7 @@ function playRound(userChoice, computerChoice) {
 }
 //!-------End here--------
 
-//------This game function call playRound function-----
+//------This is game function it calls playRound function-----
 function game(userSelection) {
   let computerChoice = getComputerChoice();
   playRound(userSelection, computerChoice);
@@ -83,7 +89,7 @@ function game(userSelection) {
 }
 //!-------End here--------
 
-// ?------------------------------UI Design------------------------------------------
+// ?------------------------------UI Design Functions------------------------------------------
 
 //-----------Function Of WIN Loose and Draw-------------- 
 function win(userChoice, computerChoice) {
@@ -95,7 +101,7 @@ function win(userChoice, computerChoice) {
   userSign_ui.classList.add("opacity");
   computerSign_ui.classList.remove("opacity");
   if(userScore==5||computerScore==5){
-    restartGame();
+   setContent("You Won!")
   }
 }
 function lost(userChoice, computerChoice) {
@@ -107,7 +113,7 @@ function lost(userChoice, computerChoice) {
   computerSign_ui.classList.add("opacity");
   userSign_ui.classList.remove("opacity");
   if(userScore==5||computerScore==5){
-    restartGame();
+    setContent("You Lost..")
   }
 }
 function draw(userChoice, computerChoice) {
@@ -116,7 +122,6 @@ function draw(userChoice, computerChoice) {
   roundInfo_ui.textContent = "It's a Tie! 😑";
   roundResult_ui.textContent = `${userChoice} Ties with ${computerChoice} !`;
 }
-// !-------End her---------
 //-----------Function for updating Signs-------------- 
 function updateSign(playerChoice, computerChoice) {
   switch (playerChoice) {
@@ -140,11 +145,28 @@ function updateSign(playerChoice, computerChoice) {
     case "Scissors":
       computerSign_ui.textContent = "✌";
       break;
+    }
   }
-}
-
-// EndGame Modal Testing
-
+  //!---------------*****Game Logic Ends Here*****---------------- 
+  
+  // ---------------*****EndGame Modal*****-------------------
+  function setContent(score){
+  endgameMsg_ui.textContent=score;
+  openEndgameModal();
+  
+  }
+  // Endgame Modal opening and closing function
+  function openEndgameModal(){
+    endgameModal_ui.classList.add('active');
+    overlay_ui.classList.add('active');
+    resetBtn_ui.addEventListener('click',closeEndgameModal)
+  }
+  function closeEndgameModal(){
+    endgameModal_ui.classList.remove('active');
+    overlay_ui.classList.remove('active');
+    restartGame();
+  }
+  //Reset Function
 function restartGame() {
   userScore = 0
   computerScore = 0
@@ -154,8 +176,7 @@ function restartGame() {
   computerScore_ui.textContent = 'Computer: 0'
   userSign_ui.textContent = '❔'
   computerSign_ui.textContent = '❔'
-  endgameModal.classList.remove('active')
-  overlay.classList.remove('active')
+  computerSign_ui.classList.remove("opacity");
+  userSign_ui.classList.remove("opacity");
+  
 }
-// restartBtn.addEventListener('click', restartGame)
-// overlay.addEventListener('click', closeEndgameModal)
