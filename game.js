@@ -8,10 +8,10 @@ const computerSign_ui = document.getElementById("computerSign");
 const userScore_ui = document.getElementById("userScore");
 const computerScore_ui = document.getElementById("computerScore");
 //!Modal Variables
-const endgameMsg_ui=document.getElementById("endgameMsg");
-const endgameModal_ui=document.getElementById("endgameModal");
-const overlay_ui=document.getElementById("overlay");
-const resetBtn_ui=document.getElementById("resetBtn");
+const endgameMsg_ui = document.getElementById("endgameMsg");
+const endgameModal_ui = document.getElementById("endgameModal");
+const overlay_ui = document.getElementById("overlay");
+const resetBtn_ui = document.getElementById("resetBtn");
 
 //!User Choice Object Variable
 const userChoiceArr = Array.from(document.querySelectorAll("[data-choice]"));
@@ -91,7 +91,7 @@ function game(userSelection) {
 
 // ?------------------------------UI Design Functions------------------------------------------
 
-//-----------Function Of WIN Loose and Draw-------------- 
+//-----------Function Of WIN Loose and Draw--------------
 function win(userChoice, computerChoice) {
   userScore++;
   userScore_ui.textContent = `Player:${userScore}`; //we can also use inner HTML but it is unsafe
@@ -100,8 +100,8 @@ function win(userChoice, computerChoice) {
   roundResult_ui.textContent = `${userChoice} Beats ${computerChoice} !`;
   userSign_ui.classList.add("opacity");
   computerSign_ui.classList.remove("opacity");
-  if(userScore==5||computerScore==5){
-   setContent("You Won!")
+  if (userScore == 5 || computerScore == 5) {
+    setContent("You Won!");
   }
 }
 function lost(userChoice, computerChoice) {
@@ -112,8 +112,8 @@ function lost(userChoice, computerChoice) {
   roundResult_ui.textContent = `${userChoice} is Beaten by ${computerChoice} !`;
   computerSign_ui.classList.add("opacity");
   userSign_ui.classList.remove("opacity");
-  if(userScore==5||computerScore==5){
-    setContent("You Lost..")
+  if (userScore == 5 || computerScore == 5) {
+    setContent("You Lost..");
   }
 }
 function draw(userChoice, computerChoice) {
@@ -122,7 +122,7 @@ function draw(userChoice, computerChoice) {
   roundInfo_ui.textContent = "It's a Tie! 😑";
   roundResult_ui.textContent = `${userChoice} Ties with ${computerChoice} !`;
 }
-//-----------Function for updating Signs-------------- 
+//-----------Function for updating Signs--------------
 function updateSign(playerChoice, computerChoice) {
   switch (playerChoice) {
     case "Rock":
@@ -145,38 +145,35 @@ function updateSign(playerChoice, computerChoice) {
     case "Scissors":
       computerSign_ui.textContent = "✌";
       break;
-    }
   }
-  //!---------------*****Game Logic Ends Here*****---------------- 
-  
-  // ---------------*****EndGame Modal*****-------------------
-  function setContent(score){
-  endgameMsg_ui.textContent=score;
+}
+//!---------------*****Game Logic Ends Here*****----------------
+// ---------------*****EndGame Modal*****-------------------
+function setContent(score) {
+  endgameMsg_ui.textContent = score;
   openEndgameModal();
-  
-  }
-  // Endgame Modal opening and closing function
-  function openEndgameModal(){
-    endgameModal_ui.classList.add('active');
-    overlay_ui.classList.add('active');
-    resetBtn_ui.addEventListener('click',closeEndgameModal)
-  }
-  function closeEndgameModal(){
-    endgameModal_ui.classList.remove('active');
-    overlay_ui.classList.remove('active');
-    restartGame();
-  }
-  //Reset Function
+}
+// Endgame Modal opening and closing function
+function openEndgameModal() {
+  endgameModal_ui.classList.add("active");
+  overlay_ui.classList.add("active");
+  resetBtn_ui.addEventListener("click", closeEndgameModal);
+}
+function closeEndgameModal() {
+  endgameModal_ui.classList.remove("active");
+  overlay_ui.classList.remove("active");
+  restartGame();
+}
+//Reset Function
 function restartGame() {
-  userScore = 0
-  computerScore = 0
-  roundInfo_ui.textContent = 'Choose your weapon'
-  roundResult_ui.textContent = 'First to score 5 points wins the game'
-  userScore_ui.textContent = 'Player: 0'
-  computerScore_ui.textContent = 'Computer: 0'
-  userSign_ui.textContent = '❔'
-  computerSign_ui.textContent = '❔'
+  userScore = 0;
+  computerScore = 0;
+  roundInfo_ui.textContent = "Choose your weapon";
+  roundResult_ui.textContent = "First to score 5 points wins the game";
+  userScore_ui.textContent = "Player: 0";
+  computerScore_ui.textContent = "Computer: 0";
+  userSign_ui.textContent = "❔";
+  computerSign_ui.textContent = "❔";
   computerSign_ui.classList.remove("opacity");
   userSign_ui.classList.remove("opacity");
-  
 }

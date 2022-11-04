@@ -19,9 +19,11 @@
     <!-- Fonts End here -->
 </head>
 <body>
+<!-- Header -->
     <header class="header">
       <h1 class="title">ROCK PAPER SCISSORS</h1>
     </header>
+<!-- Scorecard -->
     <div class="main">
       <div class= "scoreboard">
         <div class="info">
@@ -41,26 +43,27 @@
           </div>
         </div>
       </div>
+<!-- Buttons -->
       <div class="buttons"> 
         <button class="btn btnActive" data-choice="Rock" id="r">
           <div class="sign" >✊</div>
         </button>
-        <button class="btn" data-choice="Paper" id="p">
-          <div class="sign">✋</div>
+        <button class="btn btnActive" data-choice="Paper" id="p">
+          <div class="sign ">✋</div>
         </button>
-        <button class="btn" data-choice="Scissors" id="s">
+        <button class="btn btnActive" data-choice="Scissors" id="s">
           <div class="sign">✌</div>
         </button>
       </div>
   </div>
-
-  <!-- EndGame Modal -->
+<!-- EndGame Modal -->
   <div class="modal" id="endgameModal">
     <p class="modal-title" id="endgameMsg">You won!</p>
     <button class=" resetBtn btnActive" id="resetBtn">Play again</button>
   </div>
-  <!-- we add this div to cover whole background -->
+<!-- we add this div to cover whole background as overlay -->
   <div class="overlay" id="overlay"></div> 
+
 </body>
 </html>
 </html>
